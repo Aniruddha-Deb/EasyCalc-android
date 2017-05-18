@@ -1,0 +1,38 @@
+<resources>
+    <string name="app_name">EasyCalc</string>
+    <string name="clear" translatable="false">C</string>
+    <string name="delete">Del</string>
+    <string name="equals">=</string>
+    <string name="add" translatable="false">+</string>
+    <string name="subtract">–</string>
+    <string name="multiply">×</string>
+    <string name="divide">÷</string>
+    <string name="lbracket">(</string>
+    <string name="rbracket">)</string>
+    <string name="sqrt">√</string>
+    <string name="square">\u00B2</string>
+
+    <string name="mem_plus">M+</string>
+    <string name="mem_minus">M-</string>
+    <string name="mem_clear">MC</string>
+    <string name="mem_recall">MR</string>
+    <string name="history">HISTORY</string>
+    <string name="numpad">NUMPAD</string>
+
+    <string name="one">1</string>
+    <string name="two">2</string>
+    <string name="three">3</string>
+    <string name="four">4</string>
+    <string name="five">5</string>
+    <string name="six">6</string>
+    <string name="seven">7</string>
+    <string name="eight">8</string>
+    <string name="nine">9</string>
+    <string name="zero">0</string>
+    <string name="decimal">.</string>
+
+    <string name="memoryAddError">Could not add answer to memory.</string>
+    <string name="memorySubtractError">Could not subtract answer from memory.</string>
+
+    <string name="clear_history_prompt">This will delete all your history. Are you sure you want to continue?</string>
+</resources>

@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "511311160865",
+    "firebase_url": "https://easycalc-4c2e4.firebaseio.com",
+    "project_id": "easycalc-4c2e4",
+    "storage_bucket": "easycalc-4c2e4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:511311160865:android:bc98df08f6505861",
+        "android_client_info": {
+          "package_name": "com.sensei.easycalc"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "511311160865-dhksv5d15kuo9q5aamb2pc5lvjivjg0m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCt_f_irKltGxk7k1dWiqMvLzMe09JdTys"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

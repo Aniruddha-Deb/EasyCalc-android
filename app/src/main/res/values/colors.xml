@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#bdbdbd</color>
+    <color name="colorPrimaryDark">#424242</color>
+    <color name="colorPrimaryRipple">#616161</color>
+    <color name="colorAccent">#20c400</color>
+    <color name="colorAccentComplement">#c40083</color>
+    <color name="colorClear">#FFFDE7</color>
+    <color name="colorDelete">#F44336</color>
+    <color name="colorEquals">#20c400</color>
+    <color name="colorOperands">#FF6F00</color>
+    <color name="colorNumpad">#000000</color>
+    <color name="colorError">#c62828</color>
+</resources>

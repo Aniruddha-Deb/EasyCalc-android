@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/colorPrimary">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/colorAccent">
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="start|center"
+            android:padding="10sp"
+            android:textSize="20sp"
+            android:background="@color/colorAccent"
+            android:text="@string/history"
+            android:layout_weight="1"
+            android:clickable="false"
+            style="?android:attr/borderlessButtonStyle"
+            android:textColor="@android:color/white"/>
+
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:visibility="visible"
+            android:layout_gravity="end|bottom"
+            app:srcCompat="@drawable/delete"
+            android:onClick="onHistoryDeleteButtonClick"
+            android:contentDescription="@string/delete"
+            android:scaleX="1.25"
+            android:scaleY="1.25"
+            style="?android:attr/button"
+            android:padding="10sp"
+            android:background="@color/colorAccent"/>
+
+    </LinearLayout>
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/historyList" >
+
+    </ListView>
+
+</LinearLayout>

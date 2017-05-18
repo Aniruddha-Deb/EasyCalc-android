@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ईज़ीकेल्क</string>
+
+    <string name="one">१</string>
+    <string name="two">२</string>
+    <string name="three">३</string>
+    <string name="four">४</string>
+    <string name="five">५</string>
+    <string name="six">६</string>
+    <string name="seven">७</string>
+    <string name="eight">८</string>
+    <string name="nine">९</string>
+    <string name="zero">०</string>
+
+    <string name="mem_plus">यादाश से जोड़े (M+)</string>
+    <string name="mem_minus">यादाश से घटाए (M-)</string>
+    <string name="mem_clear">यादाश साफ़ करें (MC)</string>
+    <string name="mem_recall">यादाश स्मरण करें (MR)</string>
+    <string name="history">इतिहास</string>
+    <string name="memory">यादाश</string>
+
+    <string name="memoryAddError">यादाश से जवाब जोड़ा न जा सका |</string>
+    <string name="memorySubtractError">यादाश से जवाब घटाया न जा सका |</string>
+</resources>
