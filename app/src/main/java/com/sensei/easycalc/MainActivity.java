@@ -13,13 +13,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.sensei.easycalc.core.ExpressionController;
+import com.sensei.easycalc.core.Symbols;
 import com.sensei.easycalc.dao.DatabaseHelper;
 import com.sensei.easycalc.ui.adapter.BottomViewPagerAdapter;
 import com.sensei.easycalc.util.LocaleUtil;
 
 import java.math.BigDecimal;
+import java.util.HashMap;
 
 import me.grantland.widget.AutofitHelper;
+
+import static com.sensei.easycalc.core.Symbols.*;
 
 public class MainActivity extends AppCompatActivity{
 
@@ -37,10 +41,23 @@ public class MainActivity extends AppCompatActivity{
     @Override
     protected void onCreate( Bundle savedInstanceState ) {
         DatabaseHelper.createInstance( this );
+        setUpConstants();
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_main );
         initializeComponents();
         setUpViewPager();
+    }
+
+    private void setUpConstants() {
+        HashMap<String, String> symbols = new HashMap<>();
+        symbols.put( ADD, getString( R.string.add ) );
+        symbols.put( SUBTRACT, getString( R.string.subtract ) );
+        symbols.put( MULTIPLY, getString( R.string.multiply ) );
+        symbols.put( DIVIDE, getString( R.string.divide ) );
+        symbols.put( SQRT, getString( R.string.sqrt ) );
+        symbols.put( LBRACKET, getString( R.string.lbracket ) );
+        symbols.put( RBRACKET, getString( R.string.rbracket ) );
+        Symbols.setUpConstants( symbols );
     }
 
     private void setUpViewPager() {

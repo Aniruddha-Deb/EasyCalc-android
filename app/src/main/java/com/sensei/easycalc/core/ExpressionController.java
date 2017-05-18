@@ -30,8 +30,8 @@ public class ExpressionController {
 
     private void createComponents() {
         expression = new StringBuilder();
-        lexer = new Lexer( expression.toString(), activity );
-        evaluator = new Evaluator( activity );
+        lexer = new Lexer( expression.toString() );
+        evaluator = new Evaluator();
 
         CMD_EQUALS = activity.getString( R.string.equals );
         CMD_CLEAR  = activity.getString( R.string.clear  );
@@ -135,9 +135,9 @@ public class ExpressionController {
     }
 
     private void appendToExpression( String inputEntered ) {
-        if( inputEntered.equals( lexer.sqrt+"" ) ) {
+        if( inputEntered.equals( Symbols.symbol( Symbols.SQRT ) ) ) {
             expression.append( inputEntered );
-            expression.append( lexer.lbracket );
+            expression.append( Symbols.symbol( Symbols.LBRACKET ) );
         }
         else {
             expression.append( inputEntered );
