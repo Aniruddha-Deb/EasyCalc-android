@@ -11,13 +11,6 @@ android {
         targetSdkVersion 24
         versionCode 1
         versionName "1.0"
-        jackOptions {
-            enabled true
-        }
-    }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
     }
     buildTypes {
         release {
@@ -33,6 +26,8 @@ dependencies {
     compile 'com.android.support:appcompat-v7:24.2.1'
     compile 'me.grantland:autofittextview:0.2.1'
     compile 'com.sensei:easycalc-core:0.4.0-ALPHA'
+    compile 'com.android.support:support-v4:24.2.1'
 }
+
 
 apply plugin: 'com.google.gms.google-services'

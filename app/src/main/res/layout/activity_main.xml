@@ -150,9 +150,12 @@
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="0sp"
             android:layout_height="wrap_content"
+            android:onClick="onSettingsButtonClick"
             android:contentDescription="@string/clear"
             app:srcCompat="@drawable/settings"
+            android:src="@drawable/settings"
             android:layout_weight="1"/>
+
     </TableRow>
 
     <android.support.v4.view.ViewPager

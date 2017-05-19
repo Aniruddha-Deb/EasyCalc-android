@@ -1,7 +1,11 @@
 package com.sensei.easycalc;
 
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Vibrator;
+import android.preference.PreferenceManager;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -46,8 +50,15 @@ public class MainActivity extends AppCompatActivity{
     protected void onCreate( Bundle savedInstanceState ) {
         DatabaseHelper.createInstance( this );
         setUpConstants();
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+        boolean syncConnPref = sharedPref.getBoolean( "mem_buttons", true );
+        if( syncConnPref ) {
+            setContentView( R.layout.activity_main );
+        }
+        else {
+            setContentView( R.layout.activity_main_sans_memory );
+        }
         super.onCreate( savedInstanceState );
-        setContentView( R.layout.activity_main );
         initializeComponents();
         setUpViewPager();
     }
@@ -198,16 +209,27 @@ public class MainActivity extends AppCompatActivity{
         }
     }
 
+    public void onSettingsButtonClick( View view ) {
+        Intent intent = new Intent( this, SettingsActivity.class );
+        startActivity( intent );
+    }
+
     public void onHistoryDeleteButtonClick( View view ) {
         vibrate();
         AlertDialog.Builder builder = new AlertDialog.Builder( this );
         builder.setMessage( R.string.clear_history_prompt );
-        builder.setPositiveButton( "Yes", (dialogInterface, i) -> {
-            DatabaseHelper.getInstance().clearHistory();
-            pager.getAdapter().notifyDataSetChanged();
+        builder.setPositiveButton( "Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                DatabaseHelper.getInstance().clearHistory();
+                pager.getAdapter().notifyDataSetChanged();
+            }
         } );
-        builder.setNegativeButton( "No", (dialogInterface, i) -> {
-            // do nothing
+        builder.setNegativeButton( "No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                // do nothing
+            }
         } );
         builder.create().show();
     }
