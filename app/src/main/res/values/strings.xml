@@ -18,6 +18,7 @@
     <string name="mem_recall">MR</string>
     <string name="history">HISTORY</string>
     <string name="numpad">NUMPAD</string>
+    <string name="mem_holder">MEM = %1$s</string>
 
     <string name="one">1</string>
     <string name="two">2</string>

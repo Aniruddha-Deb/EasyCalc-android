@@ -2,7 +2,6 @@ package com.sensei.easycalc.ui.adapter;
 
 import android.content.Context;
 import android.database.Cursor;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,11 +13,10 @@ import com.sensei.easycalc.util.LocaleUtil;
 
 public class HistoryCursorAdapter extends CursorAdapter {
 
-    private static final String TAG = "HistoryCursorAdapter";
-
     private LayoutInflater layoutInflater = null;
     private Context c = null;
 
+    @SuppressWarnings( "deprecation" )
     public HistoryCursorAdapter( Context context, Cursor c ) {
         super( context, c );
         this.c = context;

@@ -1,6 +1,5 @@
 package com.sensei.easycalc;
 
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.support.v4.view.ViewPager;
@@ -23,11 +22,16 @@ import java.util.HashMap;
 
 import me.grantland.widget.AutofitHelper;
 
-import static com.sensei.easycalc.core.Symbols.*;
+import static com.sensei.easycalc.core.Symbols.ADD;
+import static com.sensei.easycalc.core.Symbols.DIVIDE;
+import static com.sensei.easycalc.core.Symbols.LBRACKET;
+import static com.sensei.easycalc.core.Symbols.MULTIPLY;
+import static com.sensei.easycalc.core.Symbols.RBRACKET;
+import static com.sensei.easycalc.core.Symbols.SCALE;
+import static com.sensei.easycalc.core.Symbols.SQRT;
+import static com.sensei.easycalc.core.Symbols.SUBTRACT;
 
 public class MainActivity extends AppCompatActivity{
-
-    private static final String TAG = "MainActivity";
 
     private TextView expressionView = null;
     private TextView answerView = null;
@@ -49,12 +53,13 @@ public class MainActivity extends AppCompatActivity{
     }
 
     private void setUpConstants() {
-        HashMap<String, String> symbols = new HashMap<>();
+        HashMap<String, Object> symbols = new HashMap<>();
         symbols.put( ADD, getString( R.string.add ) );
         symbols.put( SUBTRACT, getString( R.string.subtract ) );
         symbols.put( MULTIPLY, getString( R.string.multiply ) );
         symbols.put( DIVIDE, getString( R.string.divide ) );
         symbols.put( SQRT, getString( R.string.sqrt ) );
+        symbols.put( SCALE, 10 );
         symbols.put( LBRACKET, getString( R.string.lbracket ) );
         symbols.put( RBRACKET, getString( R.string.rbracket ) );
         Symbols.setUpConstants( symbols );
@@ -197,18 +202,12 @@ public class MainActivity extends AppCompatActivity{
         vibrate();
         AlertDialog.Builder builder = new AlertDialog.Builder( this );
         builder.setMessage( R.string.clear_history_prompt );
-        builder.setPositiveButton( "Yes", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                DatabaseHelper.getInstance().clearHistory();
-                pager.getAdapter().notifyDataSetChanged();
-            }
+        builder.setPositiveButton( "Yes", (dialogInterface, i) -> {
+            DatabaseHelper.getInstance().clearHistory();
+            pager.getAdapter().notifyDataSetChanged();
         } );
-        builder.setNegativeButton( "No", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick( DialogInterface dialogInterface, int i ) {
-                // do nothing
-            }
+        builder.setNegativeButton( "No", (dialogInterface, i) -> {
+            // do nothing
         } );
         builder.create().show();
     }
@@ -262,7 +261,7 @@ public class MainActivity extends AppCompatActivity{
         if( memory == null || memory.equals( BigDecimal.ZERO ) ) {
             memoryView.setText( "" );
         } else {
-            memoryView.setText( "MEM = " + LocaleUtil.convertToString( memory.toPlainString(), this ) );
+            memoryView.setText( getString( R.string.mem_holder, LocaleUtil.convertToString( memory.toPlainString(), this ) ) );
         }
     }
 }

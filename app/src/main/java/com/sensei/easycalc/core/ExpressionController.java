@@ -72,8 +72,11 @@ public class ExpressionController {
         Log.d( TAG, getDisplayableAnswer() );
         Log.d( TAG, getDisplayableExpression() );
         if( ! ( getDisplayableAnswer().equals( "" ) || getDisplayableExpression().equals( "" ) ) ) {
+            // replace whitespaces in expression and check whether they equal the answer. If yes,
+            // then do not append to memory.
             String ansCheck = getDisplayableAnswer().replace( "-", "–" );
             String exprCheck = getDisplayableExpression().trim().replace( "\\s", "" );
+
             if( !( ansCheck.equals( exprCheck ) ) ) {
                 DatabaseHelper.getInstance().addTransactionToDatabase(
                         getDisplayableExpression(),
