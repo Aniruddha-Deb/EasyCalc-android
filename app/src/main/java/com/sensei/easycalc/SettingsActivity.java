@@ -1,7 +1,7 @@
 package com.sensei.easycalc;
 
-import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -17,6 +17,7 @@ public class SettingsActivity extends AppCompatActivity {
         setSupportActionBar( (Toolbar)findViewById( R.id.my_toolbar ) );
         ActionBar ab = getSupportActionBar();
         ab.setDisplayHomeAsUpEnabled( true );
+        ab.setDisplayShowHomeEnabled( true );
         setTitle( "Settings" );
         getFragmentManager().beginTransaction()
                 .add( R.id.settings, new SettingsFragment() )
@@ -25,9 +26,6 @@ public class SettingsActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
-        Intent i = new Intent( this, MainActivity.class );
-        startActivity( i );
-        this.finish();
+        NavUtils.navigateUpFromSameTask( this );
     }
 }

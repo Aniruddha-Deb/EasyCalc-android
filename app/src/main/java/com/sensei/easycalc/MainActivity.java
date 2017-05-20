@@ -221,7 +221,6 @@ public class MainActivity extends AppCompatActivity{
     public void onSettingsButtonClick( View view ) {
         Intent intent = new Intent( this, SettingsActivity.class );
         startActivity( intent );
-        finish();
     }
 
     public void onHistoryDeleteButtonClick(View view ) {
