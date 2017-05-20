@@ -93,6 +93,7 @@
             android:background="@color/colorPrimaryDark"
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="0sp"
+            android:id="@+id/settingsButton"
             android:layout_height="wrap_content"
             android:onClick="onSettingsButtonClick"
             android:contentDescription="@string/clear"

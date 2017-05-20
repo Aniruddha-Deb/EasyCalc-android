@@ -44,6 +44,8 @@ public class MainActivity extends AppCompatActivity{
 
     private BigDecimal memory = null;
 
+    private boolean vibrate = true;
+
     private ViewPager pager = null;
 
     @Override
@@ -92,7 +94,12 @@ public class MainActivity extends AppCompatActivity{
         memoryView = (TextView)findViewById( R.id.memoryView );
         controller = new ExpressionController( this );
 
+        ((ImageButton)findViewById( R.id.settingsButton )).setImageResource( R.drawable.settings );
+        ((ImageButton)findViewById( R.id.historyButton )).setImageResource( R.drawable.history );
         memory = new BigDecimal( 0 );
+
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences( this );
+        vibrate = sharedPref.getBoolean( "vibrate", true );
     }
 
     @Override
@@ -118,8 +125,10 @@ public class MainActivity extends AppCompatActivity{
     }
 
     private void vibrate() {
-        Vibrator v = (Vibrator)this.getSystemService( VIBRATOR_SERVICE );
-        v.vibrate( 25 );
+        if( vibrate ) {
+            Vibrator v = ( Vibrator ) this.getSystemService( VIBRATOR_SERVICE );
+            v.vibrate( 25 );
+        }
     }
 
     public void onNonNumpadButtonClick(View view ) {
@@ -212,9 +221,10 @@ public class MainActivity extends AppCompatActivity{
     public void onSettingsButtonClick( View view ) {
         Intent intent = new Intent( this, SettingsActivity.class );
         startActivity( intent );
+        finish();
     }
 
-    public void onHistoryDeleteButtonClick( View view ) {
+    public void onHistoryDeleteButtonClick(View view ) {
         vibrate();
         AlertDialog.Builder builder = new AlertDialog.Builder( this );
         builder.setMessage( R.string.clear_history_prompt );

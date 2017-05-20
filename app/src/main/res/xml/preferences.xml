@@ -7,4 +7,9 @@
         android:key="mem_buttons"
         android:defaultValue="true" />
 
+    <SwitchPreference
+        android:title="Vibrate on button click"
+        android:key="vibrate"
+        android:defaultValue="true" />
+
 </PreferenceScreen>

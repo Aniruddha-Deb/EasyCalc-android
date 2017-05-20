@@ -6,10 +6,12 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
+import com.sensei.easycalc.ui.fragment.SettingsFragment;
+
 public class SettingsActivity extends AppCompatActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate( Bundle savedInstanceState ) {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_settings );
         setSupportActionBar( (Toolbar)findViewById( R.id.my_toolbar ) );
@@ -23,7 +25,9 @@ public class SettingsActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent( this, MainActivity.class );
-        startActivity( intent );
+        super.onBackPressed();
+        Intent i = new Intent( this, MainActivity.class );
+        startActivity( i );
+        this.finish();
     }
 }

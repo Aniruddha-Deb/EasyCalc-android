@@ -1,8 +1,10 @@
-package com.sensei.easycalc;
+package com.sensei.easycalc.ui.fragment;
 
 import android.os.Bundle;
 import android.preference.PreferenceFragment;
 import android.view.View;
+
+import com.sensei.easycalc.R;
 
 public class SettingsFragment extends PreferenceFragment {
 

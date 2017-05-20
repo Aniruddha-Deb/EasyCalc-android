@@ -86,13 +86,17 @@ public class ExpressionController {
     }
 
     private void outputAnswerOnExpressionView() {
+        Log.d( "ExprController", "Equals pressed" );
         expression = new StringBuilder( getDisplayableAnswer() );
+        Log.d( "ExprController", "Answer is " + expression.toString() );
         refreshOutput();
     }
 
     private void refreshOutput() {
         String expr = getDisplayableExpression();
         String ans = getDisplayableAnswer();
+        Log.d( "ExprController", "Showing expression " + expr );
+        Log.d( "ExprController", "Showing answer " + ans );
         activity.showExpression( expr );
         activity.showAnswer( ans );
     }
@@ -106,6 +110,7 @@ public class ExpressionController {
     }
 
     private String getDisplayableExpression() {
+        Log.d( "TAG", "Expression = " + expression.toString() );
         lexer.reset( expression.toString() );
         ArrayList<Token> tokens = lexer.getAllTokens();
 
@@ -114,6 +119,7 @@ public class ExpressionController {
         for( Token t : tokens ) {
             s += " " + t.getTokenValue();
         }
+        Log.d( "TAG", "answer = " + s );
         return s;
     }
 
