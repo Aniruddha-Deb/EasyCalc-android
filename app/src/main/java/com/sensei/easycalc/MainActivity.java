@@ -33,6 +33,7 @@ import static com.sensei.easycalc.core.Symbols.MULTIPLY;
 import static com.sensei.easycalc.core.Symbols.RBRACKET;
 import static com.sensei.easycalc.core.Symbols.SCALE;
 import static com.sensei.easycalc.core.Symbols.SQRT;
+import static com.sensei.easycalc.core.Symbols.SQUARE;
 import static com.sensei.easycalc.core.Symbols.SUBTRACT;
 
 public class MainActivity extends AppCompatActivity{
@@ -52,27 +53,34 @@ public class MainActivity extends AppCompatActivity{
     protected void onCreate( Bundle savedInstanceState ) {
         DatabaseHelper.createInstance( this );
         setUpConstants();
+        setUpContentView();
+        super.onCreate( savedInstanceState );
+        initializeComponents();
+        setUpViewPager();
+
+    }
+
+    private void setUpContentView() {
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
-        boolean syncConnPref = sharedPref.getBoolean( "mem_buttons", true );
-        if( syncConnPref ) {
+        boolean showMemoryButtons = sharedPref.getBoolean( "mem_buttons", true );
+        if( showMemoryButtons ) {
             setContentView( R.layout.activity_main );
         }
         else {
             setContentView( R.layout.activity_main_sans_memory );
         }
-        super.onCreate( savedInstanceState );
-        initializeComponents();
-        setUpViewPager();
     }
 
     private void setUpConstants() {
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
         HashMap<String, Object> symbols = new HashMap<>();
         symbols.put( ADD, getString( R.string.add ) );
         symbols.put( SUBTRACT, getString( R.string.subtract ) );
         symbols.put( MULTIPLY, getString( R.string.multiply ) );
         symbols.put( DIVIDE, getString( R.string.divide ) );
         symbols.put( SQRT, getString( R.string.sqrt ) );
-        symbols.put( SCALE, 10 );
+        symbols.put( SQUARE, getString( R.string.square ) );
+        symbols.put( SCALE, Integer.parseInt( sharedPref.getString( "scale", "10" ) ) );
         symbols.put( LBRACKET, getString( R.string.lbracket ) );
         symbols.put( RBRACKET, getString( R.string.rbracket ) );
         Symbols.setUpConstants( symbols );
@@ -113,11 +121,20 @@ public class MainActivity extends AppCompatActivity{
     }
 
     public void showExpression( String str ) {
+        if( expressionView.getTag().equals( "Dirty" ) ) {
+            expressionView.setBackground( getResources().getDrawable( R.color.colorPrimaryDark ) );
+            expressionView.setTag( "Clean" );
+        }
         expressionView.setText( LocaleUtil.convertToString( str, this ) );
     }
 
     public void showAnswer( String answer ) {
         answerView.setText( LocaleUtil.convertToString( answer, this ) );
+    }
+
+    public void showError() {
+        expressionView.setBackground( getResources().getDrawable( R.color.colorError ) );
+        expressionView.setTag( "Dirty" );
     }
 
     public ExpressionController getController() {

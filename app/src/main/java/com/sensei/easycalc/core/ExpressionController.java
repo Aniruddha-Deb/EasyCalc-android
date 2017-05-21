@@ -86,17 +86,19 @@ public class ExpressionController {
     }
 
     private void outputAnswerOnExpressionView() {
-        Log.d( "ExprController", "Equals pressed" );
-        expression = new StringBuilder( getDisplayableAnswer() );
-        Log.d( "ExprController", "Answer is " + expression.toString() );
-        refreshOutput();
+        lexer.reset( expression.toString() );
+        try {
+            evaluator.evaluate( lexer );
+            expression = new StringBuilder( getDisplayableAnswer() );
+            refreshOutput();
+        } catch( Exception ex ) {
+            activity.showError();
+        }
     }
 
     private void refreshOutput() {
         String expr = getDisplayableExpression();
         String ans = getDisplayableAnswer();
-        Log.d( "ExprController", "Showing expression " + expr );
-        Log.d( "ExprController", "Showing answer " + ans );
         activity.showExpression( expr );
         activity.showAnswer( ans );
     }
@@ -138,18 +140,8 @@ public class ExpressionController {
             processCommand( inputEntered ) ;
         }
         else {
-            appendToExpression( inputEntered ) ;
+            expression.append( inputEntered );
             refreshOutput();
-        }
-    }
-
-    private void appendToExpression( String inputEntered ) {
-        if( inputEntered.equals( Symbols.symbol( Symbols.SQRT ) ) ) {
-            expression.append( inputEntered );
-            expression.append( Symbols.symbol( Symbols.LBRACKET ) );
-        }
-        else {
-            expression.append( inputEntered );
         }
     }
 

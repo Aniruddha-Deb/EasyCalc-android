@@ -12,4 +12,11 @@
         android:key="vibrate"
         android:defaultValue="true" />
 
+    <EditTextPreference
+        android:title="Accuracy of Decimals"
+        android:summary="number of digits to show after a decimal point"
+        android:numeric="integer"
+        android:key="scale"
+        android:defaultValue="10" />
+
 </PreferenceScreen>

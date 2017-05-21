@@ -14,6 +14,7 @@
         android:textSize="50sp"
         android:id="@+id/exprView"
         android:paddingStart="25sp"
+        android:tag="Clean"
         android:paddingLeft="25sp"
         android:maxLines="1"
         android:paddingEnd="2sp"
@@ -129,6 +130,7 @@
             android:layout_height="wrap_content"
             android:textAllCaps="false"
             android:text="@string/square"
+            android:onClick="onNonNumpadButtonClick"
             android:textColor="@android:color/white"
             android:textSize="20sp"
             android:layout_weight="1"/>
