@@ -9,6 +9,12 @@ import com.sensei.easycalc.dao.DatabaseHelper;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 
+import static com.sensei.easycalc.core.Symbols.ADD;
+import static com.sensei.easycalc.core.Symbols.DIVIDE;
+import static com.sensei.easycalc.core.Symbols.MULTIPLY;
+import static com.sensei.easycalc.core.Symbols.SUBTRACT;
+import static com.sensei.easycalc.core.Symbols.symbol;
+
 public class ExpressionController {
 
     private static final String TAG = "ExpressionController";
@@ -22,6 +28,8 @@ public class ExpressionController {
     private static String   CMD_CLEAR  = null;
     private static String   CMD_DELETE = null;
     private static String[] CMDS       = null;
+
+    private boolean reset = false;
 
     public ExpressionController(MainActivity activity ) {
         this.activity = activity;
@@ -63,14 +71,13 @@ public class ExpressionController {
             }
         }
         else if( cmd.equals( CMD_EQUALS ) ) {
+            reset = true;
             saveAnswerToHistory();
             outputAnswerOnExpressionView();
         }
     }
 
     private void saveAnswerToHistory() {
-        Log.d( TAG, getDisplayableAnswer() );
-        Log.d( TAG, getDisplayableExpression() );
         if( ! ( getDisplayableAnswer().equals( "" ) || getDisplayableExpression().equals( "" ) ) ) {
             // replace whitespaces in expression and check whether they equal the answer. If yes,
             // then do not append to memory.
@@ -135,12 +142,25 @@ public class ExpressionController {
         }
     }
 
+    private boolean isOperandInput( String inputEntered ) {
+        return  inputEntered.equals( symbol( ADD ) ) ||
+                inputEntered.equals( symbol( SUBTRACT ) ) ||
+                inputEntered.equals( symbol( MULTIPLY ) ) ||
+                inputEntered.equals( symbol( DIVIDE ) ) ;
+    }
+
     public void updateInput( String inputEntered ) {
         if( isCommandInput( inputEntered ) ) {
             processCommand( inputEntered ) ;
         }
+        else if( !(isOperandInput( inputEntered )) && reset ){
+            expression = new StringBuilder( inputEntered );
+            reset = false;
+            refreshOutput();
+        }
         else {
             expression.append( inputEntered );
+            reset = false;
             refreshOutput();
         }
     }

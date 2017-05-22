@@ -36,15 +36,28 @@ public class HistoryFragment extends Fragment {
     @Override
     public void onViewCreated( View view, @Nullable Bundle savedInstanceState ) {
         ListView historyView = (ListView)view.findViewById( R.id.historyList );
+
         historyView.setOnItemClickListener( new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView< ? > adapterView, View view, int i, long l) {
+                String transaction = ((TextView)view.findViewById( R.id.historyItem )).getText().toString();
+                String answer = transaction.split( " = " )[1];
+                if( controller != null ) {
+                    controller.updateInput( answer );
+                }
+            }
+        } );
+
+        historyView.setOnItemLongClickListener( new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView< ? > adapterView, View view, int i, long l) {
                 String transaction = ((TextView)view.findViewById( R.id.historyItem )).getText().toString();
                 String expression = transaction.split( " = " )[0];
                 if( controller != null ) {
                     controller.updateInput( getResources().getString( R.string.clear ) );
                     controller.updateInput( expression );
                 }
+                return true;
             }
         } );
         cursorAdapter = new HistoryCursorAdapter(
