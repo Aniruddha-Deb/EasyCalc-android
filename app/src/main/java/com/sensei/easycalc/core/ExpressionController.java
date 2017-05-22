@@ -11,7 +11,9 @@ import java.util.ArrayList;
 
 import static com.sensei.easycalc.core.Symbols.ADD;
 import static com.sensei.easycalc.core.Symbols.DIVIDE;
+import static com.sensei.easycalc.core.Symbols.LBRACKET;
 import static com.sensei.easycalc.core.Symbols.MULTIPLY;
+import static com.sensei.easycalc.core.Symbols.SQRT;
 import static com.sensei.easycalc.core.Symbols.SUBTRACT;
 import static com.sensei.easycalc.core.Symbols.symbol;
 
@@ -149,19 +151,31 @@ public class ExpressionController {
                 inputEntered.equals( symbol( DIVIDE ) ) ;
     }
 
+    private boolean isSubOperandInput( String inputEntered ) {
+        return  inputEntered.equals( symbol( SQRT ) ) ||
+                inputEntered.equals( symbol( LBRACKET ) ) ;
+    }
+
     public void updateInput( String inputEntered ) {
         if( isCommandInput( inputEntered ) ) {
             processCommand( inputEntered ) ;
         }
-        else if( !(isOperandInput( inputEntered )) && reset ){
-            expression = new StringBuilder( inputEntered );
-            reset = false;
-            refreshOutput();
-        }
         else {
-            expression.append( inputEntered );
+            if( !(isOperandInput( inputEntered )) && reset ) {
+                expression = new StringBuilder( inputEntered );
+                refreshOutput();
+            }
+            else if( isSubOperandInput( inputEntered ) &&
+                     expression.charAt( expression.length()-1 ) != symbol( MULTIPLY ).toString().charAt( 0 ) ) {
+                expression.append( symbol( MULTIPLY ) );
+                expression.append( inputEntered );
+                refreshOutput();
+            }
+            else {
+                expression.append( inputEntered );
+                refreshOutput();
+            }
             reset = false;
-            refreshOutput();
         }
     }
 
