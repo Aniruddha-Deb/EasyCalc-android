@@ -165,10 +165,15 @@ public class ExpressionController {
                 expression = new StringBuilder( inputEntered );
                 refreshOutput();
             }
-            else if( isSubOperandInput( inputEntered ) &&
-                     expression.charAt( expression.length()-1 ) != symbol( MULTIPLY ).toString().charAt( 0 ) ) {
-                expression.append( symbol( MULTIPLY ) );
-                expression.append( inputEntered );
+            else if( isSubOperandInput( inputEntered ) && expression.length() != 0 ) {
+                String prevOp = expression.charAt( expression.length()-1 ) + "";
+                if( !( isOperandInput( prevOp ) || isSubOperandInput( prevOp ) ) ) {
+                    expression.append( symbol( MULTIPLY ) );
+                    expression.append( inputEntered );
+                }
+                else {
+                    expression.append( inputEntered );
+                }
                 refreshOutput();
             }
             else {
