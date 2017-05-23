@@ -3,12 +3,15 @@ package com.sensei.easycalc;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.preference.PreferenceManager;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -23,6 +26,7 @@ import com.sensei.easycalc.util.LocaleUtil;
 
 import java.math.BigDecimal;
 import java.util.HashMap;
+import java.util.Locale;
 
 import me.grantland.widget.AutofitHelper;
 
@@ -46,23 +50,33 @@ public class MainActivity extends AppCompatActivity{
     private BigDecimal memory = null;
 
     private boolean vibrate = true;
+    private SharedPreferences sharedPreferences = null;
 
     private ViewPager pager = null;
 
     @Override
     protected void onCreate( Bundle savedInstanceState ) {
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences( this );
+        setLocale( sharedPreferences.getString( "locale", "en" ) );
         DatabaseHelper.createInstance( this );
         setUpConstants();
         setUpContentView();
         super.onCreate( savedInstanceState );
         initializeComponents();
         setUpViewPager();
+    }
 
+    public void setLocale( String lang ) {
+        Locale myLocale = new Locale( lang );
+        Resources res = getResources();
+        DisplayMetrics dm = res.getDisplayMetrics();
+        Configuration conf = res.getConfiguration();
+        conf.locale = myLocale;
+        res.updateConfiguration(conf, dm);
     }
 
     private void setUpContentView() {
-        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
-        boolean showMemoryButtons = sharedPref.getBoolean( "mem_buttons", true );
+        boolean showMemoryButtons = sharedPreferences.getBoolean( "mem_buttons", true );
         if( showMemoryButtons ) {
             setContentView( R.layout.activity_main );
         }
@@ -72,7 +86,6 @@ public class MainActivity extends AppCompatActivity{
     }
 
     private void setUpConstants() {
-        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
         HashMap<String, Object> symbols = new HashMap<>();
         symbols.put( ADD, getString( R.string.add ) );
         symbols.put( SUBTRACT, getString( R.string.subtract ) );
@@ -80,7 +93,7 @@ public class MainActivity extends AppCompatActivity{
         symbols.put( DIVIDE, getString( R.string.divide ) );
         symbols.put( SQRT, getString( R.string.sqrt ) );
         symbols.put( SQUARE, getString( R.string.square ) );
-        symbols.put( SCALE, Integer.parseInt( sharedPref.getString( "scale", "10" ) ) );
+        symbols.put( SCALE, Integer.parseInt( sharedPreferences.getString( "scale", "10" ) ) );
         symbols.put( LBRACKET, getString( R.string.lbracket ) );
         symbols.put( RBRACKET, getString( R.string.rbracket ) );
         Symbols.setUpConstants( symbols );
@@ -106,8 +119,7 @@ public class MainActivity extends AppCompatActivity{
         ((ImageButton)findViewById( R.id.historyButton )).setImageResource( R.drawable.history );
         memory = new BigDecimal( 0 );
 
-        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences( this );
-        vibrate = sharedPref.getBoolean( "vibrate", true );
+        vibrate = sharedPreferences.getBoolean( "vibrate", true );
     }
 
     @Override

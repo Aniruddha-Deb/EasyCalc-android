@@ -27,4 +27,5 @@
     <string name="settings_vibrate_button_click">बटन दबाने पर कम्पित करें</string>
     <string name="settings_decimal_accuracy">दशमलव अंक की संख्या शक्ति</string>
     <string name="settings_decimal_accuracy_description">दशमलव बिंदु के बाद के आंकड़ों की संख्या</string>
+    <string name="settings_language">भाषा</string>
 </resources>

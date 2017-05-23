@@ -19,4 +19,11 @@
         android:key="scale"
         android:defaultValue="10" />
 
+    <ListPreference
+        android:title="@string/settings_language"
+        android:key="locale"
+        android:entryValues="@array/localeValues"
+        android:entries="@array/languages"
+        android:defaultValue="0"/>
+
 </PreferenceScreen>

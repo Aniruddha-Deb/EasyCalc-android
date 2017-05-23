@@ -45,4 +45,15 @@
     <string name="settings_vibrate_button_click">Vibrate on button click</string>
     <string name="settings_decimal_accuracy">Accuracy of decimals</string>
     <string name="settings_decimal_accuracy_description">Number of digits to show after a decimal point</string>
+    <string name="settings_language">Language</string>
+
+    <string-array name="languages">
+        <item>English (US)</item>
+        <item>हिंदी</item>
+    </string-array>
+
+    <string-array name="localeValues">
+        <item>en</item>
+        <item>hi</item>
+    </string-array>
 </resources>
