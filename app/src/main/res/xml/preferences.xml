@@ -8,13 +8,13 @@
         android:defaultValue="true" />
 
     <SwitchPreference
-        android:title="Vibrate on button click"
+        android:title="@string/settings_vibrate_button_click"
         android:key="vibrate"
         android:defaultValue="true" />
 
     <EditTextPreference
-        android:title="Accuracy of Decimals"
-        android:summary="number of digits to show after a decimal point"
+        android:title="@string/settings_decimal_accuracy"
+        android:summary="@string/settings_decimal_accuracy_description"
         android:numeric="integer"
         android:key="scale"
         android:defaultValue="10" />

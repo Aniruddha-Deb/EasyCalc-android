@@ -1,9 +1,9 @@
 <resources>
     <string name="app_name">EasyCalc</string>
-    <string name="clear" translatable="false">C</string>
+    <string name="clear">C</string>
     <string name="delete">Del</string>
     <string name="equals">=</string>
-    <string name="add" translatable="false">+</string>
+    <string name="add">+</string>
     <string name="subtract">–</string>
     <string name="multiply">×</string>
     <string name="divide">÷</string>
@@ -19,6 +19,9 @@
     <string name="history">HISTORY</string>
     <string name="numpad">NUMPAD</string>
     <string name="mem_holder">MEM = %1$s</string>
+
+    <string name="yes">YES</string>
+    <string name="no">NO</string>
 
     <string name="one">1</string>
     <string name="two">2</string>
@@ -37,5 +40,9 @@
 
     <string name="clear_history_prompt">This will delete all your history. Are you sure you want to continue?</string>
 
+    <string name="settings">Settings</string>
     <string name="settings_show_mem_buttons">Show memory buttons</string>
+    <string name="settings_vibrate_button_click">Vibrate on button click</string>
+    <string name="settings_decimal_accuracy">Accuracy of decimals</string>
+    <string name="settings_decimal_accuracy_description">Number of digits to show after a decimal point</string>
 </resources>

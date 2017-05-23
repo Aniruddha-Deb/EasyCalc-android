@@ -244,14 +244,14 @@ public class MainActivity extends AppCompatActivity{
         vibrate();
         AlertDialog.Builder builder = new AlertDialog.Builder( this );
         builder.setMessage( R.string.clear_history_prompt );
-        builder.setPositiveButton( "Yes", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton( getString( R.string.yes ), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 DatabaseHelper.getInstance().clearHistory();
                 pager.getAdapter().notifyDataSetChanged();
             }
         } );
-        builder.setNegativeButton( "No", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton( getString( R.string.no ), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 // do nothing
