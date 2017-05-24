@@ -11,6 +11,7 @@ import android.preference.PreferenceManager;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.AppCompatDelegate;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.Button;
@@ -53,6 +54,10 @@ public class MainActivity extends AppCompatActivity{
     private SharedPreferences sharedPreferences = null;
 
     private ViewPager pager = null;
+
+    static {
+        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
+    }
 
     @Override
     protected void onCreate( Bundle savedInstanceState ) {
@@ -117,7 +122,8 @@ public class MainActivity extends AppCompatActivity{
 
         ((ImageButton)findViewById( R.id.settingsButton )).setImageResource( R.drawable.settings );
         ((ImageButton)findViewById( R.id.historyButton )).setImageResource( R.drawable.history );
-        memory = new BigDecimal( 0 );
+        memory = new BigDecimal( sharedPreferences.getString( "memory", "0" ) );
+        refreshMemoryView();
 
         vibrate = sharedPreferences.getBoolean( "vibrate", true );
     }
@@ -125,6 +131,9 @@ public class MainActivity extends AppCompatActivity{
     @Override
     public void onBackPressed() {
         if( pager.getCurrentItem() == 1 ) {
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putString( "memory", memory.toPlainString() );
+            editor.apply();
             super.onBackPressed();
         }
         else {

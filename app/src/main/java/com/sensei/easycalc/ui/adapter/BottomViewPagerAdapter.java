@@ -17,7 +17,7 @@ public class BottomViewPagerAdapter extends FragmentStatePagerAdapter
 
     private static final String TAG = "BottomViewPagerAdapter";
 
-    public static final int NUM_VIEWS = 2;
+    private static final int NUM_VIEWS = 2;
     private MainActivity activity = null;
 
     public BottomViewPagerAdapter( FragmentManager fm, MainActivity a ) {

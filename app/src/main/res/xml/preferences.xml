@@ -4,23 +4,27 @@
 
     <SwitchPreference
         android:title="@string/settings_show_mem_buttons"
+        android:textColor="@android:color/black"
         android:key="mem_buttons"
         android:defaultValue="true" />
 
     <SwitchPreference
         android:title="@string/settings_vibrate_button_click"
+        android:textColor="@android:color/black"
         android:key="vibrate"
         android:defaultValue="true" />
 
     <EditTextPreference
         android:title="@string/settings_decimal_accuracy"
         android:summary="@string/settings_decimal_accuracy_description"
+        android:textColor="@android:color/black"
         android:numeric="integer"
         android:key="scale"
         android:defaultValue="10" />
 
     <ListPreference
         android:title="@string/settings_language"
+        android:textColor="@android:color/black"
         android:key="locale"
         android:entryValues="@array/localeValues"
         android:entries="@array/languages"

@@ -1,7 +1,5 @@
 package com.sensei.easycalc.core;
 
-import android.util.Log;
-
 import com.sensei.easycalc.MainActivity;
 import com.sensei.easycalc.R;
 import com.sensei.easycalc.dao.DatabaseHelper;
@@ -121,7 +119,6 @@ public class ExpressionController {
     }
 
     private String getDisplayableExpression() {
-        Log.d( "TAG", "Expression = " + expression.toString() );
         lexer.reset( expression.toString() );
         ArrayList<Token> tokens = lexer.getAllTokens();
 
@@ -130,7 +127,6 @@ public class ExpressionController {
         for( Token t : tokens ) {
             s += " " + t.getTokenValue();
         }
-        Log.d( "TAG", "answer = " + s );
         return s;
     }
 
@@ -139,7 +135,6 @@ public class ExpressionController {
         try {
             return evaluator.evaluate( lexer );
         } catch( Exception ex ) {
-            Log.e( TAG, ex.getMessage() );
             return null;
         }
     }
