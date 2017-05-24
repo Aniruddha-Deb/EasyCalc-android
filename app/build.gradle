@@ -25,7 +25,7 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'me.grantland:autofittextview:0.2.1'
-    compile 'com.sensei:easycalc-core:0.4.0-ALPHA'
+    compile 'com.sensei:easycalc-core:0.7.0'
     compile 'com.android.support:support-v4:25.3.1'
 }
 
