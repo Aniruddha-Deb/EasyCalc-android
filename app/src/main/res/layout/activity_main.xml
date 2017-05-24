@@ -1,172 +1,180 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
              xmlns:tools="http://schemas.android.com/tools"
              android:layout_width="match_parent"
              android:layout_height="match_parent"
+             android:orientation="vertical"
              xmlns:app="http://schemas.android.com/apk/res-auto"
              tools:context="com.sensei.easycalc.MainActivity">
 
-    <TableRow>
-    <TextView
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:textSize="50sp"
-        android:id="@+id/exprView"
-        android:paddingStart="25sp"
-        android:tag="Clean"
-        android:paddingLeft="25sp"
-        android:maxLines="1"
-        android:paddingEnd="2sp"
-        android:paddingRight="2sp"
-        android:paddingBottom="10sp"
-        android:paddingTop="20sp"
-        android:textColor="@android:color/white"
-        android:gravity="end|center_horizontal"
-        android:background="@color/colorPrimaryDark"/>
-    </TableRow>
-
-    <TableRow>
-        <TextView
-            android:layout_weight="0.75"
-            android:background="@color/colorPrimaryDark"
-            android:textColor="@android:color/darker_gray"
-            android:id="@+id/memoryView"
-            android:textSize="20sp"
-            android:paddingStart="10sp"
-            android:paddingEnd="10sp"/>
-        <TextView
-            android:layout_weight="1.25"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:background="@color/colorPrimaryDark"
-            android:textColor="@android:color/white"
-            android:id="@+id/answerView"
-            android:textSize="20sp"
-            android:maxLines="1"
-            android:gravity="end"
-            android:paddingStart="10sp"
-            android:paddingEnd="10sp"/>
-    </TableRow>
-
-    <TableRow
-        android:background="@color/colorPrimaryDark"
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="?android:attr/buttonBarStyle">
+        android:layout_height="112dip"
+        android:background="@color/colorAccent">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:textSize="50sp"
+                android:id="@+id/exprView"
+                android:paddingStart="25sp"
+                android:tag="Clean"
+                android:paddingLeft="25sp"
+                android:maxLines="1"
+                android:paddingEnd="2sp"
+                android:paddingRight="2sp"
+                android:paddingBottom="10sp"
+                android:paddingTop="20sp"
+                android:textColor="@android:color/white"
+                android:gravity="end|center_horizontal"
+                android:background="@color/colorPrimaryDark"/>
 
-        <Button
-            android:background="@color/colorPrimaryDark"
-            style="?android:attr/buttonBarButtonStyle"
-            android:layout_width="0sp"
+        <LinearLayout
             android:layout_height="wrap_content"
-            android:textAllCaps="false"
-            android:text="@string/mem_plus"
-            android:onClick="onMemPlusButtonClick"
-            android:textColor="@android:color/white"
-            android:textSize="20sp"
-            android:layout_weight="1"/>
+            android:layout_width="match_parent" >
+            <TextView
+                android:layout_weight="0.75"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:background="@color/colorPrimaryDark"
+                android:textColor="@android:color/darker_gray"
+                android:id="@+id/memoryView"
+                android:textSize="20sp"
+                android:paddingStart="10sp"
+                android:paddingEnd="10sp"/>
 
-        <Button
+            <TextView
+                android:id="@+id/answerView"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.25"
+                android:background="@color/colorPrimaryDark"
+                android:gravity="end"
+                android:maxLines="1"
+                android:paddingEnd="10sp"
+                android:paddingStart="10sp"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"/>
+        </LinearLayout>
+    </LinearLayout>
+
+        <TableRow
             android:background="@color/colorPrimaryDark"
-            style="?android:attr/buttonBarButtonStyle"
-            android:layout_width="0sp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAllCaps="false"
-            android:onClick="onMemMinusButtonClick"
-            android:text="@string/mem_minus"
-            android:textColor="@android:color/white"
-            android:textSize="20sp"
-            android:layout_weight="1"/>
+            style="?android:attr/buttonBarStyle">
 
-        <Button
+            <Button
+                android:background="@color/colorPrimaryDark"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="0sp"
+                android:layout_height="wrap_content"
+                android:textAllCaps="false"
+                android:text="@string/mem_plus"
+                android:onClick="onMemPlusButtonClick"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                android:layout_weight="1"/>
+
+            <Button
+                android:background="@color/colorPrimaryDark"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="0sp"
+                android:layout_height="wrap_content"
+                android:textAllCaps="false"
+                android:onClick="onMemMinusButtonClick"
+                android:text="@string/mem_minus"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                android:layout_weight="1"/>
+
+            <Button
+                android:background="@color/colorPrimaryDark"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="0sp"
+                android:layout_height="wrap_content"
+                android:textAllCaps="false"
+                android:onClick="onMemClearButtonClick"
+                android:text="@string/mem_clear"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                android:layout_weight="1"/>
+
+            <Button
+                android:background="@color/colorPrimaryDark"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="0sp"
+                android:layout_height="wrap_content"
+                android:textAllCaps="false"
+                android:text="@string/mem_recall"
+                android:onClick="onMemRecallButtonClick"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                android:layout_weight="1"/>
+
+        </TableRow>
+
+        <TableRow
             android:background="@color/colorPrimaryDark"
-            style="?android:attr/buttonBarButtonStyle"
-            android:layout_width="0sp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAllCaps="false"
-            android:onClick="onMemClearButtonClick"
-            android:text="@string/mem_clear"
-            android:textColor="@android:color/white"
-            android:textSize="20sp"
-            android:layout_weight="1"/>
+            style="?android:attr/buttonBarStyle">
 
-        <Button
-            android:background="@color/colorPrimaryDark"
-            style="?android:attr/buttonBarButtonStyle"
-            android:layout_width="0sp"
-            android:layout_height="wrap_content"
-            android:textAllCaps="false"
-            android:text="@string/mem_recall"
-            android:onClick="onMemRecallButtonClick"
-            android:textColor="@android:color/white"
-            android:textSize="20sp"
-            android:layout_weight="1"/>
+            <Button
+                android:background="@color/colorPrimaryDark"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="0sp"
+                android:layout_height="wrap_content"
+                android:textAllCaps="false"
+                android:onClick="onNonNumpadButtonClick"
+                android:text="@string/sqrt"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                android:layout_weight="1"/>
 
-    </TableRow>
+            <Button
+                android:background="@color/colorPrimaryDark"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="0sp"
+                android:layout_height="wrap_content"
+                android:textAllCaps="false"
+                android:text="@string/square"
+                android:onClick="onNonNumpadButtonClick"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                android:layout_weight="1"/>
 
-    <TableRow
-        android:background="@color/colorPrimaryDark"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="?android:attr/buttonBarStyle">
+            <ImageButton
+                android:background="@color/colorPrimaryDark"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="0sp"
+                android:layout_height="wrap_content"
+                android:onClick="onHistoryButtonClick"
+                android:tag="@string/history"
+                android:id="@+id/historyButton"
+                android:contentDescription="@string/history"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/history"/>
 
-        <Button
-            android:background="@color/colorPrimaryDark"
-            style="?android:attr/buttonBarButtonStyle"
-            android:layout_width="0sp"
-            android:layout_height="wrap_content"
-            android:textAllCaps="false"
-            android:onClick="onNonNumpadButtonClick"
-            android:text="@string/sqrt"
-            android:textColor="@android:color/white"
-            android:textSize="20sp"
-            android:layout_weight="1"/>
+            <ImageButton
+                android:background="@color/colorPrimaryDark"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="0sp"
+                android:layout_height="wrap_content"
+                android:onClick="onSettingsButtonClick"
+                android:id="@+id/settingsButton"
+                android:contentDescription="@string/clear"
+                app:srcCompat="@drawable/settings"
+                android:layout_weight="1"/>
 
-        <Button
-            android:background="@color/colorPrimaryDark"
-            style="?android:attr/buttonBarButtonStyle"
-            android:layout_width="0sp"
-            android:layout_height="wrap_content"
-            android:textAllCaps="false"
-            android:text="@string/square"
-            android:onClick="onNonNumpadButtonClick"
-            android:textColor="@android:color/white"
-            android:textSize="20sp"
-            android:layout_weight="1"/>
-
-        <ImageButton
-            android:background="@color/colorPrimaryDark"
-            style="?android:attr/buttonBarButtonStyle"
-            android:layout_width="0sp"
-            android:layout_height="wrap_content"
-            android:onClick="onHistoryButtonClick"
-            android:tag="@string/history"
-            android:id="@+id/historyButton"
-            android:contentDescription="@string/history"
-            android:layout_weight="1"
-            app:srcCompat="@drawable/history"/>
-
-        <ImageButton
-            android:background="@color/colorPrimaryDark"
-            style="?android:attr/buttonBarButtonStyle"
-            android:layout_width="0sp"
-            android:layout_height="wrap_content"
-            android:onClick="onSettingsButtonClick"
-            android:id="@+id/settingsButton"
-            android:contentDescription="@string/clear"
-            app:srcCompat="@drawable/settings"
-            android:layout_weight="1"/>
-
-    </TableRow>
+        </TableRow>
 
     <android.support.v4.view.ViewPager
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
 
-
-    </android.support.v4.view.ViewPager>
-
-</TableLayout>
+</LinearLayout>
 
