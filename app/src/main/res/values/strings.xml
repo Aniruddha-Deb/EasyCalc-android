@@ -1,24 +1,24 @@
 <resources>
     <string name="app_name">EasyCalc</string>
-    <string name="clear">C</string>
-    <string name="delete">Del</string>
-    <string name="equals">=</string>
-    <string name="add">+</string>
-    <string name="subtract">–</string>
-    <string name="multiply">×</string>
-    <string name="divide">÷</string>
-    <string name="lbracket">(</string>
-    <string name="rbracket">)</string>
-    <string name="sqrt">√</string>
-    <string name="square">\u00B2</string>
+    <string name="clear" translatable="false">C</string>
+    <string name="delete" translatable="false">Del</string>
+    <string name="equals" translatable="false">=</string>
+    <string name="add" translatable="false">+</string>
+    <string name="subtract" translatable="false">–</string>
+    <string name="multiply" translatable="false">×</string>
+    <string name="divide" translatable="false">÷</string>
+    <string name="lbracket" translatable="false">(</string>
+    <string name="rbracket" translatable="false">)</string>
+    <string name="sqrt" translatable="false">√</string>
+    <string name="square" translatable="false">\u00B2</string>
 
-    <string name="mem_plus">M+</string>
-    <string name="mem_minus">M-</string>
-    <string name="mem_clear">MC</string>
-    <string name="mem_recall">MR</string>
+    <string name="mem_plus" translatable="false">M+</string>
+    <string name="mem_minus" translatable="false">M-</string>
+    <string name="mem_clear" translatable="false">MC</string>
+    <string name="mem_recall" translatable="false">MR</string>
     <string name="history">HISTORY</string>
-    <string name="numpad">NUMPAD</string>
-    <string name="mem_holder">MEM = %1$s</string>
+    <string name="numpad" translatable="false">NUMPAD</string>
+    <string name="mem_holder" translatable="false">MEM = %1$s</string>
 
     <string name="yes">YES</string>
     <string name="no">NO</string>
@@ -33,7 +33,7 @@
     <string name="eight">8</string>
     <string name="nine">9</string>
     <string name="zero">0</string>
-    <string name="decimal">.</string>
+    <string name="decimal" translatable="false">.</string>
 
     <string name="memoryAddError">Could not add answer to memory.</string>
     <string name="memorySubtractError">Could not subtract answer from memory.</string>
@@ -47,12 +47,12 @@
     <string name="settings_decimal_accuracy_description">Number of digits to show after a decimal point</string>
     <string name="settings_language">Language</string>
 
-    <string-array name="languages">
+    <string-array name="languages" translatable="false">
         <item>English (US)</item>
         <item>हिंदी</item>
     </string-array>
 
-    <string-array name="localeValues">
+    <string-array name="localeValues" translatable="false">
         <item>en</item>
         <item>hi</item>
     </string-array>

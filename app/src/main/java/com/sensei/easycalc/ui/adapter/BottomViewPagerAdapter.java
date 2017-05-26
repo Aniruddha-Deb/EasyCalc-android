@@ -29,7 +29,7 @@ public class BottomViewPagerAdapter extends FragmentStatePagerAdapter
     public Fragment getItem( int position ) {
         switch( position ) {
             case 0:
-                return new HistoryFragment().withController( activity.getController() );
+                return new HistoryFragment().withActivity( activity );
 
             case 1:
                 return new NumpadFragment();

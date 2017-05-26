@@ -11,8 +11,8 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.sensei.easycalc.MainActivity;
 import com.sensei.easycalc.R;
-import com.sensei.easycalc.core.ExpressionController;
 import com.sensei.easycalc.dao.DatabaseHelper;
 import com.sensei.easycalc.ui.adapter.HistoryCursorAdapter;
 
@@ -20,10 +20,10 @@ public class HistoryFragment extends Fragment {
 
     private static final String TAG = "HistoryFragment";
     private HistoryCursorAdapter cursorAdapter = null;
-    private ExpressionController controller = null;
+    private MainActivity activity = null;
 
-    public HistoryFragment withController( ExpressionController controller ) {
-        this.controller = controller;
+    public HistoryFragment withActivity(MainActivity activity ) {
+        this.activity = activity;
         return this;
     }
 
@@ -40,10 +40,11 @@ public class HistoryFragment extends Fragment {
         historyView.setOnItemClickListener( new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView< ? > adapterView, View view, int i, long l) {
+                activity.vibrate();
                 String transaction = ((TextView)view.findViewById( R.id.historyItem )).getText().toString();
                 String answer = transaction.split( " = " )[1];
-                if( controller != null ) {
-                    controller.updateInput( answer );
+                if( activity.getController() != null ) {
+                    activity.getController().updateInput( answer );
                 }
             }
         } );
@@ -53,9 +54,9 @@ public class HistoryFragment extends Fragment {
             public boolean onItemLongClick(AdapterView< ? > adapterView, View view, int i, long l) {
                 String transaction = ((TextView)view.findViewById( R.id.historyItem )).getText().toString();
                 String expression = transaction.split( " = " )[0];
-                if( controller != null ) {
-                    controller.updateInput( getResources().getString( R.string.clear ) );
-                    controller.updateInput( expression );
+                if( activity.getController() != null ) {
+                    activity.getController().updateInput( getResources().getString( R.string.clear ) );
+                    activity.getController().updateInput( expression );
                 }
                 return true;
             }

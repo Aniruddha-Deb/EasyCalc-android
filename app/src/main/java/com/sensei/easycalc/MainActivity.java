@@ -162,7 +162,7 @@ public class MainActivity extends AppCompatActivity{
         return controller;
     }
 
-    private void vibrate() {
+    public void vibrate() {
         if( vibrate ) {
             Vibrator v = ( Vibrator ) this.getSystemService( VIBRATOR_SERVICE );
             v.vibrate( 25 );
@@ -257,6 +257,7 @@ public class MainActivity extends AppCompatActivity{
     }
 
     public void onSettingsButtonClick( View view ) {
+        vibrate();
         Intent intent = new Intent( this, SettingsActivity.class );
         startActivity( intent );
     }
