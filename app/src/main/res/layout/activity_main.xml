@@ -10,12 +10,11 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="112dip"
-        android:background="@color/colorAccent">
+        android:layout_height="120dip"
+        android:background="@color/colorPrimaryDark">
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
+                android:layout_height="wrap_content"
                 android:textSize="50sp"
                 android:id="@+id/exprView"
                 android:paddingStart="25sp"
@@ -36,7 +35,7 @@
             <TextView
                 android:layout_weight="0.75"
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:background="@color/colorPrimaryDark"
                 android:textColor="@android:color/darker_gray"
                 android:id="@+id/memoryView"
@@ -47,7 +46,7 @@
             <TextView
                 android:id="@+id/answerView"
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_weight="1.25"
                 android:background="@color/colorPrimaryDark"
                 android:gravity="end"
