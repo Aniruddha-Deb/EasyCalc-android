@@ -10,7 +10,7 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="120dip"
+        android:layout_height="120sp"
         android:background="@color/colorPrimaryDark">
             <TextView
                 android:layout_width="match_parent"
