@@ -115,6 +115,9 @@ public class ExpressionController {
         if( answer == null ) {
             return "";
         }
+        else if( answer.equals( BigDecimal.ZERO ) ) {
+            return "0";
+        }
         return answer.toPlainString();
     }
 
