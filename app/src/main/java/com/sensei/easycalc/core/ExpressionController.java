@@ -154,6 +154,22 @@ public class ExpressionController {
                 inputEntered.equals( symbol( LBRACKET ) ) ;
     }
 
+    public void replaceInput( String inputEntered ) {
+        if( !( isOperandInput( inputEntered ) || isSubOperandInput( inputEntered ) ) && expression.length() != 0) {
+            String prevOp = expression.charAt( expression.length()-1 ) + "";
+            if( !( isOperandInput( prevOp ) || isSubOperandInput( prevOp ) ) ) {
+                expression = new StringBuilder( inputEntered );
+                refreshOutput();
+            }
+            else {
+                updateInput( inputEntered );
+            }
+        }
+        else {
+            updateInput( inputEntered );
+        }
+    }
+
     public void updateInput( String inputEntered ) {
         if( isCommandInput( inputEntered ) ) {
             processCommand( inputEntered ) ;
@@ -167,11 +183,8 @@ public class ExpressionController {
                 String prevOp = expression.charAt( expression.length()-1 ) + "";
                 if( !( isOperandInput( prevOp ) || isSubOperandInput( prevOp ) ) ) {
                     expression.append( symbol( MULTIPLY ) );
-                    expression.append( inputEntered );
                 }
-                else {
-                    expression.append( inputEntered );
-                }
+                expression.append( inputEntered );
                 refreshOutput();
             }
             else {

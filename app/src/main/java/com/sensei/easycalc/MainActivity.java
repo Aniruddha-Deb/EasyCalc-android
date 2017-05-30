@@ -323,7 +323,7 @@ public class MainActivity extends AppCompatActivity{
     public void onMemRecallButtonClick( View view ) {
         vibrate();
         if( memory != null ) {
-            controller.updateInput( LocaleUtil.convertToString( memory.toPlainString(), this ) );
+            controller.replaceInput( LocaleUtil.convertToString( memory.toPlainString(), this ) );
         }
     }
 

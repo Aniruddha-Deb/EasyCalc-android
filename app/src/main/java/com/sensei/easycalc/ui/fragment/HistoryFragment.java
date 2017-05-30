@@ -44,7 +44,7 @@ public class HistoryFragment extends Fragment {
                 String transaction = ((TextView)view.findViewById( R.id.historyItem )).getText().toString();
                 String answer = transaction.split( " = " )[1];
                 if( activity.getController() != null ) {
-                    activity.getController().updateInput( answer );
+                    activity.getController().replaceInput( answer );
                 }
             }
         } );
@@ -56,7 +56,7 @@ public class HistoryFragment extends Fragment {
                 String expression = transaction.split( " = " )[0];
                 if( activity.getController() != null ) {
                     activity.getController().updateInput( getResources().getString( R.string.clear ) );
-                    activity.getController().updateInput( expression );
+                    activity.getController().replaceInput( expression );
                 }
                 return true;
             }
