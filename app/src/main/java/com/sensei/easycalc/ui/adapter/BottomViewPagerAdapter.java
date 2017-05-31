@@ -53,6 +53,18 @@ public class BottomViewPagerAdapter extends FragmentStatePagerAdapter
     }
 
     @Override
+    public CharSequence getPageTitle(int position) {
+        switch( position ) {
+            case 0:
+                return "HISTORY";
+
+            case 1:
+                return "NUMPAD";
+        }
+        return null;
+    }
+
+    @Override
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) { }
 
     @Override

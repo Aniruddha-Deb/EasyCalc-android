@@ -8,6 +8,7 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.preference.PreferenceManager;
+import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -110,6 +111,9 @@ public class MainActivity extends AppCompatActivity{
         pager.setAdapter( adapter );
         pager.addOnPageChangeListener( adapter );
         pager.setCurrentItem( 1 );
+
+        TabLayout tabs = (TabLayout) findViewById( R.id.viewPagerTab );
+        tabs.setupWithViewPager( pager );
     }
 
     private void initializeComponents() {
