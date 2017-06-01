@@ -32,15 +32,7 @@ import java.util.Locale;
 
 import me.grantland.widget.AutofitHelper;
 
-import static com.sensei.easycalc.core.Symbols.ADD;
-import static com.sensei.easycalc.core.Symbols.DIVIDE;
-import static com.sensei.easycalc.core.Symbols.LBRACKET;
-import static com.sensei.easycalc.core.Symbols.MULTIPLY;
-import static com.sensei.easycalc.core.Symbols.RBRACKET;
-import static com.sensei.easycalc.core.Symbols.SCALE;
-import static com.sensei.easycalc.core.Symbols.SQRT;
-import static com.sensei.easycalc.core.Symbols.SQUARE;
-import static com.sensei.easycalc.core.Symbols.SUBTRACT;
+import static com.sensei.easycalc.core.Symbols.*;
 
 public class MainActivity extends AppCompatActivity{
 
@@ -102,6 +94,10 @@ public class MainActivity extends AppCompatActivity{
         symbols.put( SCALE, Integer.parseInt( sharedPreferences.getString( "scale", "10" ) ) );
         symbols.put( LBRACKET, getString( R.string.lbracket ) );
         symbols.put( RBRACKET, getString( R.string.rbracket ) );
+        symbols.put( SIN, getString( R.string.sin ) );
+        symbols.put( COS, getString( R.string.cos ) );
+        symbols.put( TAN, getString( R.string.tan ) );
+        symbols.put( PI, getString( R.string.pi ) );
         Symbols.setUpConstants( symbols );
     }
 
@@ -125,7 +121,7 @@ public class MainActivity extends AppCompatActivity{
         controller = new ExpressionController( this );
 
         ((ImageButton)findViewById( R.id.settingsButton )).setImageResource( R.drawable.settings );
-        ((ImageButton)findViewById( R.id.historyButton )).setImageResource( R.drawable.history );
+        ((ImageButton)findViewById( R.id.piButton )).setImageResource( R.drawable.pi );
         memory = new BigDecimal( sharedPreferences.getString( "memory", "0" ) );
         refreshMemoryView();
 
@@ -233,37 +229,15 @@ public class MainActivity extends AppCompatActivity{
         controller.updateInput( "0" );
     }
 
-    public void onHistoryButtonClick( View view ) {
-        vibrate();
-        ImageButton b = (ImageButton)view;
-
-        if( b.getTag().equals( getString( R.string.history ) ) ) {
-            pager.setCurrentItem( 0 );
-            b.setImageResource( R.drawable.calculator );
-            b.setTag( getString( R.string.numpad ) );
-        }
-        else {
-            pager.setCurrentItem( 1 );
-            b.setTag( getString( R.string.history ) );
-            b.setImageResource( R.drawable.history );
-        }
-    }
-
-    public void animateHistoryButton( ImageButton b ) {
-        if( pager.getCurrentItem() == 0 ) {
-            b.setImageResource( R.drawable.calculator );
-            b.setTag( getString( R.string.numpad ) );
-        }
-        else {
-            b.setTag( getString( R.string.history ) );
-            b.setImageResource( R.drawable.history );
-        }
-    }
-
     public void onSettingsButtonClick( View view ) {
         vibrate();
         Intent intent = new Intent( this, SettingsActivity.class );
         startActivity( intent );
+    }
+
+    public void onPiButtonClick( View view ) {
+        vibrate();
+        controller.updateInput( getResources().getString( R.string.pi ) );
     }
 
     public void onHistoryDeleteButtonClick(View view ) {

@@ -5,10 +5,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
-import android.widget.ImageButton;
 
 import com.sensei.easycalc.MainActivity;
-import com.sensei.easycalc.R;
 import com.sensei.easycalc.ui.fragment.HistoryFragment;
 import com.sensei.easycalc.ui.fragment.NumpadFragment;
 
@@ -72,7 +70,6 @@ public class BottomViewPagerAdapter extends FragmentStatePagerAdapter
         if( position == 0 ) {
             notifyDataSetChanged();
         }
-        activity.animateHistoryButton( (ImageButton)activity.findViewById( R.id.historyButton ) );
     }
 
     @Override

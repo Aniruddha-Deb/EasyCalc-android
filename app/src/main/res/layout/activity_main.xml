@@ -149,12 +149,12 @@
                 style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="0sp"
                 android:layout_height="wrap_content"
-                android:onClick="onHistoryButtonClick"
+                android:onClick="onPiButtonClick"
                 android:tag="@string/history"
-                android:id="@+id/historyButton"
+                app:srcCompat="@drawable/pi"
+                android:id="@+id/piButton"
                 android:contentDescription="@string/history"
-                android:layout_weight="1"
-                app:srcCompat="@drawable/history"/>
+                android:layout_weight="1" />
 
             <ImageButton
                 android:background="@color/colorPrimaryDark"

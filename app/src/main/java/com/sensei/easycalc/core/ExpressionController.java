@@ -168,6 +168,7 @@ public class ExpressionController {
         else {
             updateInput( inputEntered );
         }
+        reset = true;
     }
 
     public void updateInput( String inputEntered ) {

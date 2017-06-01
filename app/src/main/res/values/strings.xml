@@ -12,6 +12,12 @@
     <string name="sqrt" translatable="false">√</string>
     <string name="square" translatable="false">\u00B2</string>
 
+    <string name="sin" translatable="false">Sin</string>
+    <string name="cos" translatable="false">Cos</string>
+    <string name="tan" translatable="false">Tan</string>
+
+    <string name="pi" translatable="false">π</string>
+
     <string name="mem_plus" translatable="false">M+</string>
     <string name="mem_minus" translatable="false">M-</string>
     <string name="mem_clear" translatable="false">MC</string>
@@ -22,6 +28,7 @@
 
     <string name="yes">YES</string>
     <string name="no">NO</string>
+    <string name="ok">OK</string>
 
     <string name="one">1</string>
     <string name="two">2</string>
@@ -39,6 +46,8 @@
     <string name="memorySubtractError">Could not subtract answer from memory.</string>
 
     <string name="clear_history_prompt">This will delete all your history. Are you sure you want to continue?</string>
+    <string name="accuracy_prompt">The accuracy of the inbuilt constants (Pi, E) is limited to 50 digits.
+        Calculations with them may not be accurate.</string>
 
     <string name="settings">Settings</string>
     <string name="settings_show_mem_buttons">Show memory buttons</string>
