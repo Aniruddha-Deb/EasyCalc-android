@@ -17,10 +17,12 @@
 
     <string name="yes">हाँ</string>
     <string name="no">ना</string>
+    <string name="ok">ठीक</string>
 
     <string name="memoryAddError">यादाश से जवाब जोड़ा न जा सका |</string>
     <string name="memorySubtractError">यादाश से जवाब घटाया न जा सका |</string>
     <string name="clear_history_prompt">यह आपके इतिहास को मिटा देगा | क्या आप यह करना चाहेंगे?</string>
+    <string name="accuracy_prompt">आतंरिक चिह्न (π, E) की दशमलव की संख्या शक्ति केवल ५० हैं | इनके साथ गिनती करने से भूल हो सकता हैं | </string>
 
     <string name="settings">सेटिंग्स</string>
     <string name="settings_show_mem_buttons">यादाश के बटन दिखाएं</string>

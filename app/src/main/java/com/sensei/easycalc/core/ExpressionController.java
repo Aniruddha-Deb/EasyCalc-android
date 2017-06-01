@@ -11,6 +11,7 @@ import static com.sensei.easycalc.core.Symbols.ADD;
 import static com.sensei.easycalc.core.Symbols.DIVIDE;
 import static com.sensei.easycalc.core.Symbols.LBRACKET;
 import static com.sensei.easycalc.core.Symbols.MULTIPLY;
+import static com.sensei.easycalc.core.Symbols.PI;
 import static com.sensei.easycalc.core.Symbols.SQRT;
 import static com.sensei.easycalc.core.Symbols.SUBTRACT;
 import static com.sensei.easycalc.core.Symbols.symbol;
@@ -171,22 +172,39 @@ public class ExpressionController {
         reset = true;
     }
 
+    private boolean isConstantInput( String inputEntered ) {
+        return inputEntered.equals( symbol( PI ) );
+    }
+
     public void updateInput( String inputEntered ) {
         if( isCommandInput( inputEntered ) ) {
             processCommand( inputEntered ) ;
         }
         else {
-            if( !(isOperandInput( inputEntered )) && reset ) {
-                expression = new StringBuilder( inputEntered );
-                refreshOutput();
-            }
-            else if( isSubOperandInput( inputEntered ) && expression.length() != 0 ) {
-                String prevOp = expression.charAt( expression.length()-1 ) + "";
-                if( !( isOperandInput( prevOp ) || isSubOperandInput( prevOp ) ) ) {
-                    expression.append( symbol( MULTIPLY ) );
+
+            if( expression.length() != 0 ) {
+
+                String prevOp = expression.charAt( expression.length() - 1 ) + "";
+
+                if( !( isOperandInput( inputEntered ) || isSubOperandInput( inputEntered ) )
+                        && reset ) {
+                    expression = new StringBuilder( inputEntered );
+                    refreshOutput();
                 }
-                expression.append( inputEntered );
-                refreshOutput();
+                else if( isSubOperandInput( inputEntered ) || isConstantInput( inputEntered ) ) {
+                    if( !(isOperandInput( prevOp ) || isSubOperandInput( prevOp )) ) {
+                        expression.append( symbol( MULTIPLY ) );
+                    }
+                    expression.append( inputEntered );
+                    refreshOutput();
+                }
+                else {
+                    if( isConstantInput( prevOp ) ) {
+                        expression.append( symbol( MULTIPLY ) );
+                    }
+                    expression.append( inputEntered );
+                    refreshOutput();
+                }
             }
             else {
                 expression.append( inputEntered );

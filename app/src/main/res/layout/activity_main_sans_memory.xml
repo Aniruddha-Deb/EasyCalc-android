@@ -10,12 +10,11 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="112dip"
+        android:layout_height="120sp"
         android:background="@color/colorPrimaryDark">
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_height="wrap_content"
             android:textSize="50sp"
             android:id="@+id/exprView"
             android:paddingStart="25sp"
@@ -36,7 +35,7 @@
             <TextView
                 android:layout_weight="0.75"
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:background="@color/colorPrimaryDark"
                 android:textColor="@android:color/darker_gray"
                 android:id="@+id/memoryView"
@@ -47,7 +46,7 @@
             <TextView
                 android:id="@+id/answerView"
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_weight="1.25"
                 android:background="@color/colorPrimaryDark"
                 android:gravity="end"
@@ -94,12 +93,12 @@
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="0sp"
             android:layout_height="wrap_content"
-            android:onClick="onHistoryButtonClick"
+            android:onClick="onPiButtonClick"
             android:tag="@string/history"
-            android:id="@+id/historyButton"
+            app:srcCompat="@drawable/pi"
+            android:id="@+id/piButton"
             android:contentDescription="@string/history"
-            android:layout_weight="1"
-            app:srcCompat="@drawable/history"/>
+            android:layout_weight="1" />
 
         <ImageButton
             android:background="@color/colorPrimaryDark"
@@ -114,11 +113,23 @@
 
     </TableRow>
 
+    <android.support.design.widget.TabLayout
+        android:layout_width="match_parent"
+        android:background="@color/colorPrimaryDark"
+        android:id="@+id/viewPagerTab"
+        app:tabPadding="-10dp"
+        app:tabTextColor="@android:color/white"
+        app:tabIndicatorColor="@android:color/white"
+        app:tabSelectedTextColor="@android:color/white"
+        android:layout_height="30sp" />
+
     <android.support.v4.view.ViewPager
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"/>
+        android:layout_weight="1" >
+
+    </android.support.v4.view.ViewPager>
 
 </LinearLayout>
 
