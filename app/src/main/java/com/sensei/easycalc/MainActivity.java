@@ -17,6 +17,7 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -238,6 +239,13 @@ public class MainActivity extends AppCompatActivity{
     public void onPiButtonClick( View view ) {
         vibrate();
         controller.updateInput( getResources().getString( R.string.pi ) );
+    }
+
+    public void onUnitSwitchFlip( View view ) {
+        Switch s = (Switch)view;
+        if( s.isChecked() ) {
+            // TODO tomorrow. Cockroach scared me today!
+        }
     }
 
     public void onHistoryDeleteButtonClick(View view ) {
