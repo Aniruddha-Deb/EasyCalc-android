@@ -15,6 +15,9 @@
     <string name="sin" translatable="false">Sin</string>
     <string name="cos" translatable="false">Cos</string>
     <string name="tan" translatable="false">Tan</string>
+    <string name="inv" translatable="false">Invert</string>
+    <string name="deg" translatable="false">Degrees</string>
+    <string name="rad" translatable="false">Radians</string>
 
     <string name="pi" translatable="false">π</string>
 
