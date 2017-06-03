@@ -14,16 +14,16 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.AppCompatDelegate;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.kyleduo.switchbutton.SwitchButton;
 import com.sensei.easycalc.core.ExpressionController;
 import com.sensei.easycalc.core.Symbols;
+import com.sensei.easycalc.core.angle.AngleUnit;
 import com.sensei.easycalc.dao.DatabaseHelper;
 import com.sensei.easycalc.ui.adapter.BottomViewPagerAdapter;
 import com.sensei.easycalc.util.LocaleUtil;
@@ -59,13 +59,19 @@ public class MainActivity extends AppCompatActivity{
     @Override
     protected void onCreate( Bundle savedInstanceState ) {
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences( this );
-        setLocale( sharedPreferences.getString( "locale", "en" ) );
+        loadPreferences();
         DatabaseHelper.createInstance( this );
         setUpConstants();
         setUpContentView();
         super.onCreate( savedInstanceState );
         initializeComponents();
         setUpViewPager();
+    }
+
+    private void loadPreferences() {
+        setLocale( sharedPreferences.getString( "locale", "en" ) );
+        memory = new BigDecimal( sharedPreferences.getString( "memory", "0" ) );
+        vibrate = sharedPreferences.getBoolean( "vibrate", true );
     }
 
     public void setLocale( String lang ) {
@@ -102,6 +108,17 @@ public class MainActivity extends AppCompatActivity{
         symbols.put( COS, getString( R.string.cos ) );
         symbols.put( TAN, getString( R.string.tan ) );
         symbols.put( PI, getString( R.string.pi ) );
+
+        if( sharedPreferences.getString( ANGLE_UNIT, getString( R.string.rad ) )
+                             .equals( getString( R.string.deg ) ) ) {
+            symbols.put( ANGLE_UNIT, AngleUnit.DEGREES );
+            SwitchButton s = (SwitchButton)findViewById( R.id.angleUnitSelector );
+            s.setChecked( true );
+        }
+        else {
+            symbols.put( ANGLE_UNIT, AngleUnit.RADIANS );
+        }
+
         Symbols.setUpConstants( symbols );
     }
 
@@ -126,10 +143,8 @@ public class MainActivity extends AppCompatActivity{
 
         ((ImageButton)findViewById( R.id.settingsButton )).setImageResource( R.drawable.settings );
         ((ImageButton)findViewById( R.id.piButton )).setImageResource( R.drawable.pi );
-        memory = new BigDecimal( sharedPreferences.getString( "memory", "0" ) );
         refreshMemoryView();
 
-        vibrate = sharedPreferences.getBoolean( "vibrate", true );
     }
 
     @Override
@@ -173,7 +188,7 @@ public class MainActivity extends AppCompatActivity{
         }
     }
 
-    public void onNonNumpadButtonClick(View view ) {
+    public void onNonNumpadButtonClick( View view ) {
         vibrate();
         controller.updateInput( ((Button)view).getText().toString() );
     }
@@ -245,13 +260,17 @@ public class MainActivity extends AppCompatActivity{
     }
 
     public void onUnitSwitchFlip( View view ) {
-        Switch s = (Switch)view;
+        SwitchButton s = (SwitchButton) view;
+        SharedPreferences.Editor editor = sharedPreferences.edit();
         if( s.isChecked() ) {
-            Log.d( TAG, "Switch checked" );
+            editor.putString( ANGLE_UNIT, getString( R.string.deg ) );
+            setSymbol( ANGLE_UNIT, AngleUnit.DEGREES );
         }
         else {
-            Log.d( TAG, "Switch unchecked" );
+            editor.putString( ANGLE_UNIT, getString( R.string.rad ) );
+            setSymbol( ANGLE_UNIT, AngleUnit.RADIANS );
         }
+        editor.commit();
     }
 
     public void onHistoryDeleteButtonClick(View view ) {
