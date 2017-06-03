@@ -8,43 +8,19 @@
     <TableRow
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingTop="5sp"
         android:background="@color/colorPrimary">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:text="@string/deg"
-            android:layout_gravity="end"
-            android:gravity="end|center"
-            android:paddingEnd="10sp"
-            android:paddingRight="10sp"
-            android:paddingStart="10sp"
-            android:paddingLeft="10sp"
-            android:layout_height="match_parent"
-            android:textColor="@android:color/black"
-            />
 
         <Switch
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:onClick="onS"
+            android:gravity="center"
+            android:onClick="onUnitSwitchFlip"
+            android:switchMinWidth="75dp"
+            android:track="@drawable/sw_track_selector"
             android:textColor="@android:color/black"
             android:background="@color/colorPrimary"/>
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:text="@string/rad"
-            android:layout_gravity="end"
-            android:gravity="start|center"
-            android:paddingEnd="10sp"
-            android:paddingRight="10sp"
-            android:paddingStart="10sp"
-            android:paddingLeft="10sp"
-            android:layout_height="match_parent"
-            android:textColor="@android:color/black"
-            />
     </TableRow>
 
     <TableRow

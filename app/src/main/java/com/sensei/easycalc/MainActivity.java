@@ -14,6 +14,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.AppCompatDelegate;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -36,6 +37,8 @@ import me.grantland.widget.AutofitHelper;
 import static com.sensei.easycalc.core.Symbols.*;
 
 public class MainActivity extends AppCompatActivity{
+
+    public static final String TAG = "MainActivity";
 
     private TextView expressionView = null;
     private TextView answerView = null;
@@ -244,7 +247,10 @@ public class MainActivity extends AppCompatActivity{
     public void onUnitSwitchFlip( View view ) {
         Switch s = (Switch)view;
         if( s.isChecked() ) {
-            // TODO tomorrow. Cockroach scared me today!
+            Log.d( TAG, "Switch checked" );
+        }
+        else {
+            Log.d( TAG, "Switch unchecked" );
         }
     }
 

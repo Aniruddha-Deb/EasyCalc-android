@@ -9,13 +9,14 @@ import android.util.Log;
 import com.sensei.easycalc.MainActivity;
 import com.sensei.easycalc.ui.fragment.HistoryFragment;
 import com.sensei.easycalc.ui.fragment.NumpadFragment;
+import com.sensei.easycalc.ui.fragment.TrigonometryFragment;
 
 public class BottomViewPagerAdapter extends FragmentStatePagerAdapter
                                     implements ViewPager.OnPageChangeListener{
 
     private static final String TAG = "BottomViewPagerAdapter";
 
-    private static final int NUM_VIEWS = 2;
+    private static final int NUM_VIEWS = 3;
     private MainActivity activity = null;
 
     public BottomViewPagerAdapter( FragmentManager fm, MainActivity a ) {
@@ -31,6 +32,9 @@ public class BottomViewPagerAdapter extends FragmentStatePagerAdapter
 
             case 1:
                 return new NumpadFragment();
+
+            case 2:
+                return new TrigonometryFragment();
         }
         return null;
     }
@@ -58,6 +62,9 @@ public class BottomViewPagerAdapter extends FragmentStatePagerAdapter
 
             case 1:
                 return "NUMPAD";
+
+            case 2:
+                return "TRIG";
         }
         return null;
     }
