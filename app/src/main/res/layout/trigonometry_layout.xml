@@ -11,15 +11,16 @@
         android:paddingTop="5sp"
         android:background="@color/colorPrimary">
 
-        <Switch
+        <com.kyleduo.switchbutton.SwitchButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:onClick="onUnitSwitchFlip"
+            app:kswTextOn="DEG"
+            app:kswTextOff="RAD"
             android:switchMinWidth="75dp"
-            android:track="@drawable/sw_track_selector"
-            android:textColor="@android:color/black"
-            android:background="@color/colorPrimary"/>
+            app:kswTintColor="@color/colorPrimaryDark"
+            app:kswThumbColor="@android:color/white"
+            android:textColor="@android:color/black"/>
 
     </TableRow>
 
