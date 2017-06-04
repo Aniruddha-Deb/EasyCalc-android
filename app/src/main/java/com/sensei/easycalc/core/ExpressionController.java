@@ -1,7 +1,5 @@
 package com.sensei.easycalc.core;
 
-import android.util.Log;
-
 import com.sensei.easycalc.MainActivity;
 import com.sensei.easycalc.R;
 import com.sensei.easycalc.dao.DatabaseHelper;
@@ -22,8 +20,6 @@ import static com.sensei.easycalc.core.Symbols.TAN;
 import static com.sensei.easycalc.core.Symbols.symbol;
 
 public class ExpressionController {
-
-    private static final String TAG = "ExpressionController";
 
     private StringBuilder expression = null;
     private Lexer         lexer      = null;
@@ -82,7 +78,7 @@ public class ExpressionController {
                 }
                 refreshOutput();
             }
-            catch( StringIndexOutOfBoundsException e ) {
+            catch( ArrayIndexOutOfBoundsException e ) {
                 // do nothing
             }
         }
@@ -97,8 +93,8 @@ public class ExpressionController {
         if( ! ( getDisplayableAnswer().equals( "" ) || getDisplayableExpression().equals( "" ) ) ) {
             // replace whitespaces in expression and check whether they equal the answer. If yes,
             // then do not append to memory.
-            String ansCheck = getDisplayableAnswer().replace( "-", "–" );
-            String exprCheck = getDisplayableExpression().trim().replace( "\\s", "" );
+            String ansCheck = getDisplayableAnswer().trim().replaceAll( "-", "–" );
+            String exprCheck = getDisplayableExpression().trim().replaceAll( "\\s", "" );
 
             if( !( ansCheck.equals( exprCheck ) ) ) {
                 DatabaseHelper.getInstance().addTransactionToDatabase(
@@ -167,7 +163,7 @@ public class ExpressionController {
 
     private boolean isSubOperandInput( String inputEntered ) {
         return  inputEntered.equals( symbol( SQRT ) ) ||
-                inputEntered.equals( symbol( LBRACKET ) ) ;
+                inputEntered.equals( symbol( LBRACKET ) );
     }
 
     public void replaceInput( String inputEntered ) {
@@ -219,7 +215,7 @@ public class ExpressionController {
                     refreshOutput();
                 }
                 else {
-                    if( isConstantInput( val ) ) {
+                    if( isConstantInput( val ) && isCharacterInput( inputEntered ) ) {
                         expression.append( symbol( MULTIPLY ) );
                     }
                     expression.append( inputEntered );
@@ -227,18 +223,18 @@ public class ExpressionController {
                 }
             }
             else {
-                Log.d( TAG, "Initial expression is " + expression );
                 expression.append( inputEntered );
-                Log.d( TAG, "Initial expression is " + expression );
                 if( isTrigonometryInput( inputEntered ) ) {
-                    Log.d( TAG, "Expression is trig input" );
                     expression.append( symbol( LBRACKET ) );
                 }
-                Log.d( TAG, "expression is " + expression );
                 refreshOutput();
             }
             reset = false;
         }
+    }
+
+    private boolean isCharacterInput( String inputEntered ) {
+        return Character.isDigit( inputEntered.charAt( 0 ) ) ;
     }
 
     private boolean isTrigonometryInput( String inputEntered ) {

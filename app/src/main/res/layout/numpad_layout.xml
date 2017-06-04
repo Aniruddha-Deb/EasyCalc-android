@@ -219,6 +219,7 @@
             android:text="@string/equals"
             android:textSize="50sp"
             android:layout_width="0dp"
+            android:textColor="@color/colorAccent"
             android:onClick="onNonNumpadButtonClick"
             android:layout_height="match_parent"
             android:background="@drawable/bg_ripple"

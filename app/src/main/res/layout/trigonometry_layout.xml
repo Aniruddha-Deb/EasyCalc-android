@@ -69,6 +69,56 @@
             android:layout_weight="1"/>
     </TableRow>
 
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="0dp"
+            android:text="@string/clear"
+            android:textSize="30sp"
+            android:textColor="@color/colorDelete"
+            android:onClick="onNonNumpadButtonClick"
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_ripple"
+            android:layout_weight="1"/>
+
+        <Button
+            android:id="@+id/button"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/bg_ripple"
+            android:onClick="onNonNumpadButtonClick"
+            android:text="@string/delete"
+            android:textColor="@color/colorDelete"
+            android:textSize="30sp"/>
+
+        <Button
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:text="@string/lbracket"
+            android:textColor="@color/colorOperands"
+            android:textSize="30sp"
+            android:layout_width="0dp"
+            android:onClick="onNonNumpadButtonClick"
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_ripple"
+            android:layout_weight="1"/>
+        <Button
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:text="@string/rbracket"
+            android:textSize="30sp"
+            android:textColor="@color/colorOperands"
+            android:onClick="onNonNumpadButtonClick"
+            android:layout_width="0dp"
+            android:background="@drawable/bg_ripple"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+
+    </TableRow>
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
