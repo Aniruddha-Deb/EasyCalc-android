@@ -119,7 +119,7 @@ public class ExpressionController {
         }
     }
 
-    private void refreshOutput() {
+    public void refreshOutput() {
         String expr = getDisplayableExpression();
         String ans = getDisplayableAnswer();
         activity.showExpression( expr );

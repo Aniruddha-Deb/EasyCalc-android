@@ -112,8 +112,6 @@ public class MainActivity extends AppCompatActivity{
         if( sharedPreferences.getString( ANGLE_UNIT, getString( R.string.rad ) )
                              .equals( getString( R.string.deg ) ) ) {
             symbols.put( ANGLE_UNIT, AngleUnit.DEGREES );
-            SwitchButton s = (SwitchButton)findViewById( R.id.angleUnitSelector );
-            s.setChecked( true );
         }
         else {
             symbols.put( ANGLE_UNIT, AngleUnit.RADIANS );
@@ -270,6 +268,7 @@ public class MainActivity extends AppCompatActivity{
             editor.putString( ANGLE_UNIT, getString( R.string.rad ) );
             setSymbol( ANGLE_UNIT, AngleUnit.RADIANS );
         }
+        controller.refreshOutput();
         editor.apply();
     }
 
