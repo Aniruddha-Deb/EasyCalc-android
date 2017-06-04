@@ -1,5 +1,7 @@
 package com.sensei.easycalc.core;
 
+import android.util.Log;
+
 import com.sensei.easycalc.MainActivity;
 import com.sensei.easycalc.R;
 import com.sensei.easycalc.dao.DatabaseHelper;
@@ -8,12 +10,15 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 
 import static com.sensei.easycalc.core.Symbols.ADD;
+import static com.sensei.easycalc.core.Symbols.COS;
 import static com.sensei.easycalc.core.Symbols.DIVIDE;
 import static com.sensei.easycalc.core.Symbols.LBRACKET;
 import static com.sensei.easycalc.core.Symbols.MULTIPLY;
 import static com.sensei.easycalc.core.Symbols.PI;
+import static com.sensei.easycalc.core.Symbols.SIN;
 import static com.sensei.easycalc.core.Symbols.SQRT;
 import static com.sensei.easycalc.core.Symbols.SUBTRACT;
+import static com.sensei.easycalc.core.Symbols.TAN;
 import static com.sensei.easycalc.core.Symbols.symbol;
 
 public class ExpressionController {
@@ -64,7 +69,17 @@ public class ExpressionController {
         }
         else if( cmd.equals( CMD_DELETE ) ) {
             try {
-                expression.delete( expression.length()-1, expression.length() );
+                lexer.reset( expression.toString() );
+                ArrayList<Token> tokens = lexer.getAllTokens();
+                Token lastToken = tokens.get( tokens.size()-1 );
+
+                if( lastToken.getTokenType() == Token.NUMERIC ) {
+                    expression.delete( expression.length() - 1, expression.length() );
+                }
+                else {
+                    expression.delete( expression.length() - lastToken.getTokenValue().length(),
+                                       expression.length() );
+                }
                 refreshOutput();
             }
             catch( StringIndexOutOfBoundsException e ) {
@@ -184,22 +199,27 @@ public class ExpressionController {
 
             if( expression.length() != 0 ) {
 
-                String prevOp = expression.charAt( expression.length() - 1 ) + "";
+                lexer.reset( expression.toString() );
+                ArrayList<Token> tokens = lexer.getAllTokens();
+                String val = tokens.get( tokens.size()-1 ).getTokenValue();
 
                 if( !( isOperandInput( inputEntered ) || isSubOperandInput( inputEntered ) )
                         && reset ) {
                     expression = new StringBuilder( inputEntered );
                     refreshOutput();
                 }
-                else if( isSubOperandInput( inputEntered ) || isConstantInput( inputEntered ) ) {
-                    if( !(isOperandInput( prevOp ) || isSubOperandInput( prevOp )) ) {
+                else if( isSubOperandInput( inputEntered ) || isConstantInput( inputEntered ) || isTrigonometryInput( inputEntered ) ) {
+                    if( !( isOperandInput( val ) || isSubOperandInput( val ) || isTrigonometryInput( val ) ) ) {
                         expression.append( symbol( MULTIPLY ) );
                     }
                     expression.append( inputEntered );
+                    if( isTrigonometryInput( inputEntered ) ) {
+                        expression.append( symbol( LBRACKET ) );
+                    }
                     refreshOutput();
                 }
                 else {
-                    if( isConstantInput( prevOp ) ) {
+                    if( isConstantInput( val ) ) {
                         expression.append( symbol( MULTIPLY ) );
                     }
                     expression.append( inputEntered );
@@ -207,10 +227,23 @@ public class ExpressionController {
                 }
             }
             else {
+                Log.d( TAG, "Initial expression is " + expression );
                 expression.append( inputEntered );
+                Log.d( TAG, "Initial expression is " + expression );
+                if( isTrigonometryInput( inputEntered ) ) {
+                    Log.d( TAG, "Expression is trig input" );
+                    expression.append( symbol( LBRACKET ) );
+                }
+                Log.d( TAG, "expression is " + expression );
                 refreshOutput();
             }
             reset = false;
         }
+    }
+
+    private boolean isTrigonometryInput( String inputEntered ) {
+        return inputEntered.equals( symbol( SIN ) ) ||
+               inputEntered.equals( symbol( COS ) ) ||
+               inputEntered.equals( symbol( TAN ) ) ;
     }
 }

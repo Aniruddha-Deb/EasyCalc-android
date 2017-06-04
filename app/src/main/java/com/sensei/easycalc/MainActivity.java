@@ -270,7 +270,7 @@ public class MainActivity extends AppCompatActivity{
             editor.putString( ANGLE_UNIT, getString( R.string.rad ) );
             setSymbol( ANGLE_UNIT, AngleUnit.RADIANS );
         }
-        editor.commit();
+        editor.apply();
     }
 
     public void onHistoryDeleteButtonClick(View view ) {
