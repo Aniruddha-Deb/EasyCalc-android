@@ -9,10 +9,13 @@ import java.util.ArrayList;
 
 import static com.sensei.easycalc.core.Symbols.ADD;
 import static com.sensei.easycalc.core.Symbols.COS;
+import static com.sensei.easycalc.core.Symbols.COT;
+import static com.sensei.easycalc.core.Symbols.CSC;
 import static com.sensei.easycalc.core.Symbols.DIVIDE;
 import static com.sensei.easycalc.core.Symbols.LBRACKET;
 import static com.sensei.easycalc.core.Symbols.MULTIPLY;
 import static com.sensei.easycalc.core.Symbols.PI;
+import static com.sensei.easycalc.core.Symbols.SEC;
 import static com.sensei.easycalc.core.Symbols.SIN;
 import static com.sensei.easycalc.core.Symbols.SQRT;
 import static com.sensei.easycalc.core.Symbols.SUBTRACT;
@@ -240,6 +243,9 @@ public class ExpressionController {
     private boolean isTrigonometryInput( String inputEntered ) {
         return inputEntered.equals( symbol( SIN ) ) ||
                inputEntered.equals( symbol( COS ) ) ||
-               inputEntered.equals( symbol( TAN ) ) ;
+               inputEntered.equals( symbol( TAN ) ) ||
+               inputEntered.equals( symbol( CSC ) ) ||
+               inputEntered.equals( symbol( SEC ) ) ||
+               inputEntered.equals( symbol( COT ) ) ;
     }
 }

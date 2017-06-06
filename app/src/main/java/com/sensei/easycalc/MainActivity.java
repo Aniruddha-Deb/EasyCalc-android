@@ -34,7 +34,24 @@ import java.util.Locale;
 
 import me.grantland.widget.AutofitHelper;
 
-import static com.sensei.easycalc.core.Symbols.*;
+import static com.sensei.easycalc.core.Symbols.ADD;
+import static com.sensei.easycalc.core.Symbols.ANGLE_UNIT;
+import static com.sensei.easycalc.core.Symbols.COS;
+import static com.sensei.easycalc.core.Symbols.COT;
+import static com.sensei.easycalc.core.Symbols.CSC;
+import static com.sensei.easycalc.core.Symbols.DIVIDE;
+import static com.sensei.easycalc.core.Symbols.LBRACKET;
+import static com.sensei.easycalc.core.Symbols.MULTIPLY;
+import static com.sensei.easycalc.core.Symbols.PI;
+import static com.sensei.easycalc.core.Symbols.RBRACKET;
+import static com.sensei.easycalc.core.Symbols.SCALE;
+import static com.sensei.easycalc.core.Symbols.SEC;
+import static com.sensei.easycalc.core.Symbols.SIN;
+import static com.sensei.easycalc.core.Symbols.SQRT;
+import static com.sensei.easycalc.core.Symbols.SQUARE;
+import static com.sensei.easycalc.core.Symbols.SUBTRACT;
+import static com.sensei.easycalc.core.Symbols.TAN;
+import static com.sensei.easycalc.core.Symbols.setSymbol;
 
 public class MainActivity extends AppCompatActivity{
 
@@ -107,6 +124,9 @@ public class MainActivity extends AppCompatActivity{
         symbols.put( SIN, getString( R.string.sin ) );
         symbols.put( COS, getString( R.string.cos ) );
         symbols.put( TAN, getString( R.string.tan ) );
+        symbols.put( CSC, getString( R.string.cosec ) );
+        symbols.put( SEC, getString( R.string.sec ) );
+        symbols.put( COT, getString( R.string.cot    ) );
         symbols.put( PI, getString( R.string.pi ) );
 
         if( sharedPreferences.getString( ANGLE_UNIT, getString( R.string.rad ) )
@@ -255,6 +275,11 @@ public class MainActivity extends AppCompatActivity{
     public void onPiButtonClick( View view ) {
         vibrate();
         controller.updateInput( getResources().getString( R.string.pi ) );
+    }
+
+    public void onInverseButtonClick( View view ) {
+        vibrate();
+        // TODO swap out the layout of the Trigonometry Fragment
     }
 
     public void onUnitSwitchFlip( View view ) {

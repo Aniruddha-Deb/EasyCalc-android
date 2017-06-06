@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableRow
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <Button
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="0dp"
+        android:text="@string/cosec"
+        android:textSize="35sp"
+        android:textColor="@android:color/black"
+        android:onClick="onNonNumpadButtonClick"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_ripple"
+        android:layout_weight="1"/>
+
+    <Button
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="0dp"
+        android:text="@string/sec"
+        android:textSize="40sp"
+        android:textColor="@android:color/black"
+        android:onClick="onNonNumpadButtonClick"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_ripple"
+        android:layout_weight="1"/>
+
+    <Button
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="0dp"
+        android:text="@string/cot"
+        android:textSize="40sp"
+        android:textColor="@android:color/black"
+        android:onClick="onNonNumpadButtonClick"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_ripple"
+        android:layout_weight="1"/>
+</TableRow>

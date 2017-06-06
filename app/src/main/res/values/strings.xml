@@ -15,9 +15,12 @@
     <string name="sin" translatable="false">Sin</string>
     <string name="cos" translatable="false">Cos</string>
     <string name="tan" translatable="false">Tan</string>
+    <string name="cosec" translatable="false">Cosec</string>
+    <string name="sec" translatable="false">Sec</string>
+    <string name="cot" translatable="false">Cot</string>
     <string name="inv" translatable="false">Invert</string>
-    <string name="deg" translatable="false">Degrees</string>
-    <string name="rad" translatable="false">Radians</string>
+    <string name="deg" translatable="false">Deg</string>
+    <string name="rad" translatable="false">Rad</string>
 
     <string name="pi" translatable="false">π</string>
 
@@ -32,6 +35,9 @@
     <string name="yes">YES</string>
     <string name="no">NO</string>
     <string name="ok">OK</string>
+
+    <string name="normal" translatable="false">normal</string>
+    <string name="inverse" translatable="false">inverse</string>
 
     <string name="one">1</string>
     <string name="two">2</string>
